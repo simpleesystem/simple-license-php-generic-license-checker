@@ -15,16 +15,12 @@ use SimpleLicense\LicenseChecker\Exceptions\NetworkException;
 class GuzzleHttpClient implements HttpClientInterface
 {
     private GuzzleClient $client;
-    private int $timeout;
-    private int $connectTimeout;
 
     public function __construct(
         string $baseUrl,
         int $timeout = Constants::DEFAULT_TIMEOUT_SECONDS,
         int $connectTimeout = Constants::DEFAULT_CONNECT_TIMEOUT_SECONDS
     ) {
-        $this->timeout = $timeout;
-        $this->connectTimeout = $connectTimeout;
         $this->client = new GuzzleClient([
             'base_uri' => $baseUrl,
             'timeout' => $timeout,

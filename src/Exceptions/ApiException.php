@@ -12,8 +12,14 @@ use RuntimeException;
 class ApiException extends RuntimeException
 {
     protected string $errorCode;
+    /**
+     * @var array<string, mixed>|null
+     */
     protected ?array $errorDetails;
 
+    /**
+     * @param array<string, mixed>|null $errorDetails
+     */
     public function __construct(
         string $message,
         string $errorCode = '',
@@ -31,6 +37,9 @@ class ApiException extends RuntimeException
         return $this->errorCode;
     }
 
+    /**
+     * @return array<string, mixed>|null
+     */
     public function getErrorDetails(): ?array
     {
         return $this->errorDetails;
